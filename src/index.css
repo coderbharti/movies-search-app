@@ -1,13 +1,263 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+:root {
+    --primary-color: #2f3d7e;
+    --secondary-color: #faeaeb;
+    --disabled: #e7d7d7;
+    --success: #016844;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+* {
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: var(--secondary-color);
+    min-height: 100vh;
+}
+
+.body {
+    padding: 1rem;
+    width: 60%;
+    margin: auto;
+}
+
+.title {
+    text-align: center;
+    color: var(--primary-color);
+}
+
+.row {
+    margin: 1rem auto;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 1rem;
+    width: 50%;
+}
+
+.row > input {
+    flex: 1;
+    border: 1px solid var(--primary-color);
+    outline: none;
+    border-radius: 0.5rem;
+    padding: 0.5rem;
+    font-family: cursive;
+}
+
+.btn {
+    outline: none;
+    background-color: var(--primary-color);
+    color: var(--secondary-color);
+    padding: 0.5rem;
+    border-radius: 0.5rem;
+    border: none;
+    opacity: 1;
+    transition: opacity 0.3s ease-in-out;
+}
+
+.btn:disabled {
+    background-color: var(--disabled);
+    color: var(--secondary-color);
+}
+
+.btn:hover {
+    cursor: pointer;
+    opacity: 0.7;
+}
+
+.error {
+    text-align: center;
+    margin: 1rem 0rem;
+    color: #c40101;
+}
+
+.card {
+    display: flex;
+    flex-direction: column;
+    width: 30%;
+    background-color: #fff;
+    box-shadow: 0 5px 10px 0 rgba(0, 0, 0, 0.15);
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.card-img {
+    padding-bottom: 56.25%;
+    position: relative;
+}
+
+.card .loaded-image-container {
+    overflow: hidden;
+}
+
+.card .loaded-image-container img {
+    width: 100%;
+    height: 100%;
+    max-height: 300px;
+    transition: scale 0.3s ease-in-out;
+}
+
+.card .loaded-image-container img:hover {
+    scale: 1.25;
+    cursor: pointer;
+}
+
+.subheading {
+    font-weight: 700;
+}
+
+.card-img img {
+    position: absolute;
+    width: 100%;
+}
+
+.card-body {
+    padding: 1.5rem;
+}
+
+.card-title {
+    font-size: 1.25rem;
+    line-height: 1.33;
+    font-weight: 700;
+}
+
+.card-title.skeleton {
+    min-height: 28px;
+    border-radius: 4px;
+}
+
+.card-intro {
+    margin-top: 0.75rem;
+    line-height: 1.5;
+}
+
+.card-intro.skeleton {
+    min-height: 72px;
+    border-radius: 4px;
+}
+
+.card .loaded-card-body {
+    padding: 1rem;
+}
+
+.card .loaded-card-body .card-intro {
+    margin-bottom: 0.5rem;
+}
+
+.skeleton {
+    background-color: #e2e5e7;
+    background-image: linear-gradient(
+        90deg,
+        rgba(255, 255, 255, 0),
+        rgba(255, 255, 255, 0.5),
+        rgba(255, 255, 255, 0)
+    );
+    background-size: 40px 100%;
+    background-repeat: no-repeat;
+    background-position: left -40px top 0;
+    animation: shine 1s ease infinite;
+}
+
+.resultRow {
+    padding: 1rem;
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    width: 100%;
+    gap: 1rem;
+    justify-content: center;
+}
+
+.modal {
+    position: fixed;
+    z-index: 9;
+    background: rgba(0, 0, 0, 0.6);
+    min-height: 100vh;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+}
+
+.modalBody {
+    background-color: var(--secondary-color);
+    width: 80%;
+    margin: auto;
+    z-index: 10;
+    border-radius: 1rem;
+    padding: 1rem;
+}
+
+.closeBtnRow {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+.closeBtnRow > button {
+    border-radius: 50%;
+    outline: none;
+    border: none;
+    background-color: var(--primary-color);
+    color: var(--secondary-color);
+    font-size: 1.25rem;
+    transition: opacity 0.3s ease-in-out;
+}
+
+.closeBtnRow > button:hover {
+    opacity: 0.7;
+    cursor: pointer;
+}
+
+.modalBody > form {
+    flex-direction: column;
+    display: flex;
+    gap: 1rem;
+}
+
+.modalBody > form > div {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.modalBody > form > div > label {
+    flex-basis: 100px;
+    color: var(--primary-color);
+    font-weight: 500;
+}
+
+.modalBody > form > div > input {
+    border: 1px solid var(--primary-color);
+    outline: none;
+    border-radius: 0.5rem;
+    padding: 0.5rem;
+    font-family: cursive;
+    color: var(--primary-color);
+}
+
+.success {
+    text-align: center;
+    font-size: 1.25rem;
+    text-align: center;
+    color: var(--success);
+}
+
+@keyframes shine {
+    to {
+        background-position: right -40px top 0;
+    }
+}
+
+@media only screen and (max-width: 768px) {
+    .body {
+        width: 95%;
+    }
+
+    .row {
+        width: 90%;
+        flex-direction: column;
+        gap: 1rem;
+    }
 }
