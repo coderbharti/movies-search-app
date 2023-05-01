@@ -31,14 +31,17 @@ const App = () => {
         if (res.data?.Response === "False") throw new Error("Movie not found");
         setApiData(res.data);
       })
+     
       .catch(() => {
         setApiData(null);
         setError("Unable to find movie, please try some other movie name.");
       })
       .finally(() => setLoading(false));
+     
   };
 
   const openModalHandler = (imdbID) => {
+    
     setShowModal({
       isVisible: true,
       imdbID
